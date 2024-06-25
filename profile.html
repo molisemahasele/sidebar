@@ -1,0 +1,344 @@
+<?php
+session_start();
+if(!isset($_SESSION['id']))
+{
+  header("location: login.php");
+}
+?>
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Sidebar 07</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.x.x/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+		<style>
+    img{
+      margin:10px;
+    }
+    </style>
+		<div class="wrapper d-flex align-items-stretch">
+      <nav id="sidebar" class="active">
+				<h1><a href="index.html" class="logo">T<sup>2</sup></a></h1>
+        <ul class="list-unstyled components mb-5">
+          <li class="active">
+            <a href="index.html"><span class="fa fa-home"></span> Home</a>
+          </li>
+          <li>
+            <a href="profile.html"><span class="fa fa-user"></span> Profile</a>
+          </li>
+          <li>
+            <a href="studio.html"><span class="fa fa-cogs"></span> Studio</a>
+          </li>
+          <li>
+            <a href="inbox.html"><span class="fa fa-envelope"></span> Inbox </span><span class="position-absolute badge rounded-pill bg-danger">
+              99+</span></a>
+          </li>
+          <li>
+            <a href="posts.html"><span class="fa fa-paper-plane"></span> Posts</a>
+          </li>
+          <li>
+            <a href="sponsors.html"><span class="fa fa-briefcase"></span>My Sponsors</a>
+          </li>
+          <li>
+            <a href="notifications.html"><span class="fa fa-bell position-relative"></span> Notifications <span class="position-absolute badge rounded-pill bg-danger">
+              99+
+            </span></a>
+          </li>
+          <li>
+            <a href="#"><span class="fa fa-xmark"></span> Logout</a>
+          </li>
+        </ul>
+
+        <div class="footer">
+        	<p>
+					  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Made by Molise Mahasele
+					</p>
+        </div>
+    	</nav>
+
+        <!-- Page Content  -->
+      <div id="content" class="p-4 p-md-5">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container-fluid">
+
+            <button type="button" id="sidebarCollapse" class="btn btn-primary">
+              <i class="fa fa-bars"></i>
+              <span class="sr-only">Toggle Menu</span>
+            </button>
+            <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fa fa-bars"></i>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="nav navbar-nav ml-auto">
+                <form class="d-flex">
+                  <input class="form-control me-2" type="search" placeholder="Search for brands" aria-label="Search">
+                  <button class="btn btn-primary" type="submit">Search</button>
+                </form>
+              </ul>
+            </div>
+          </div>
+        </nav>
+
+        <h1 style="text-align:center">My Profile</h1>
+        
+        <section style="background-color: #eee;">
+                <div class="container py-5">
+                  <div class="row">
+                    <div class="col">
+
+                    </div>
+                  </div>
+              
+                  <div class="row">
+                    <div class="col-lg-4">
+                      <div class="card mb-4">
+                        <div class="card-body text-center">
+                          <img src="data:image/jpeg;base64,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" alt="avatar"
+                            class="rounded-circle img-fluid" style="width: 150px;">
+                          <h5 class="my-3">Somizi</h5>
+                          <p class="text-muted mb-1">Influencer and Socialite</p>
+                          <p class="text-muted mb-4">Pretoria, South Africa</p>
+                          <div class="d-flex justify-content-center mb-2">
+                            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#myModal">
+                              Edit Profile
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="card mb-4 mb-lg-0">
+                        <div class="card-body p-0">
+                          <ul class="list-group list-group-flush rounded-3">
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <i class="fa fa-globe fa-lg text-warning"></i>
+                              <p class="mb-0">https://somizi.com</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <i class="fa fa-twitter fa-lg" style="color: #55acee;"></i>
+                              <p class="mb-0">@somgaga</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <i class="fa fa-instagram fa-lg" style="color: #ac2bac;"></i>
+                              <p class="mb-0">som_gaga</p>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between align-items-center p-3">
+                              <img src="tiktok.svg" height="20px" width="20px" alt="" />
+                              <p class="mb-0">somizi</p>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-lg-8">
+                      <div class="card mb-4">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">Full Name</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">Somizi Khumalo</p>
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">Email</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">somizi@example.com</p>
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">Phone</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">(097) 234-5678</p>
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">Mobile</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">(098) 765-4321</p>
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="row">
+                            <div class="col-sm-3">
+                              <p class="mb-0">Address</p>
+                            </div>
+                            <div class="col-sm-9">
+                              <p class="text-muted mb-0">Pretoria, South Africa</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="card mb-4 mb-md-0">
+                            <div class="card-body">
+                              <p class="mb-4"><span class="text-primary font-italic me-1">my bio</span> Short summary
+                              </p>
+                              "Passionate about inspiring positive change and connecting with amazing people. 🌟 #InfluencerLife 💫 Join me on this journey of empowerment, growth, and creativity! 📸✨ #InspireConnectCreate"
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+              </section>
+      
+      
+      </div>
+    </div>
+    
+    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel4" aria-hidden="true">
+      <div class="modal-dialog d-flex justify-content-center">
+          <div class="modal-content w-75">
+              <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel4">Edit</h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+              </div>
+              <div class="modal-body p-4">
+                  <form method="Post">
+                      <!-- Name input -->
+                      
+  
+                      <!-- Email input -->
+                      <div class="form-outline mb-4">
+                          <input name="email" type="email" id="email4" placeholder="name@example.com" class="form-control" />
+                          <label class="form-label" for="email4">Email address</label>
+                      </div>
+
+                      <div class="form-outline mb-4">
+                        <input name="instagram" type="text" id="name4" placeholder="Instagram handle" class="form-control" />
+                        <label class="form-label" for="name4">Instagram</label>
+                    </div>
+
+                    <!-- Email input -->
+                    <div class="form-outline mb-4">
+                        <input name="tiktok" type="text" id="email4" placeholder="tiktok username" class="form-control" />
+                        <label class="form-label" for="email4">tiktok</label>
+                    </div>
+
+                    <div class="form-outline mb-4">
+                      <input name="twitter" type="email" id="email4" placeholder="twitter handle" class="form-control" />
+                      <label class="form-label" for="email4">twitter</label>
+                  </div>
+
+                    <div class="form-outline mb-4">
+                      <input name="website" type="text" id="name4" placeholder="personal website" class="form-control" />
+                      <label class="form-label" for="name4">website</label>
+                  </div>
+
+                  <!-- Email input -->
+                  <div class="form-outline mb-4">
+                      <input name="address" type="text" id="email4" placeholder="Pretoria, South Africa" class="form-control" />
+                      <label class="form-label" for="email4">Address</label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input name="phone" type="number" placeholder="phone" id="name4" class="form-control" />
+                    <label class="form-label" for="name4">phone</label>
+                </div>
+
+                <div class="form-outline mb-4">
+                  <input mobile="mobile" type="number" placeholder="mobile" id="name4" class="form-control" />
+                  <label class="form-label" for="name4">mobile</label>
+              </div>
+  
+                      <!-- textarea input -->
+                      <div class="form-outline mb-4">
+                          <textarea name="bio" id="textarea4" rows="4" class="form-control"></textarea>
+                          <label class="form-label" for="textarea4">Short bio</label>
+                      </div>
+  
+                      
+                      <!-- Submit button -->
+                      <input name="submit" value="Send" type="submit" class="btn btn-primary btn-block">
+                  </form>
+              </div>
+          </div>
+      </div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+
+<?php
+  include("database.php");
+  if(isset($_POST['submit']))
+  {
+
+    $email = $_POST['email'];
+    $instagram = $_POST['instagram'];
+    $tiktok = $_POST['tiktok'];
+    $twitter = $_POST['twitter'];
+    $website = $_POST['website'];
+    $address = $_POST['address'];
+    $phone = $_POST['phone'];
+    $mobile = $_POST['mobile'];
+    $bio = $_POST['bio'];
+
+    $id = $_SESSION['id'];
+    $select = mysqli_query($conn, "SELECT * FROM influencer WHERE id='$id'");
+    if(empty($email))
+    {
+      $email = $row['email'];
+    }
+    if(empty($instagram))
+    {
+      $instagram = $row['instagram'];
+    }
+    if(empty($tiktok))
+    {
+      $tiktok = $row['tiktok'];
+    }
+    if(empty($twitter))
+    {
+      $twitter = $row['twitter'];
+    }
+    if(empty($website))
+    {
+      $website = $row['website'];
+    }
+    if(empty($address))
+    {
+      $address = $row['address'];
+    }
+    if(empty($phone))
+    {
+      $phone = $row['phone'];
+    }
+    if(empty($mobile))
+    {
+      $mobile = $row['mobile'];
+    }
+    if(empty($bio))
+    {
+      $bio = $row['bio'];
+    }
+
+    $update = mysqli_query($conn, "UPDATE influencer SET email='$email', bio='$bio', website='$website', instagram='$instagram', twitter='$twitter', tiktok='$tiktok', address='$address', mobile='$mobile', phone='$phone'");
+  }
+?>
+
+
+</html>
